@@ -130,6 +130,9 @@
       <button type="button" id="reset">Reset</button>
     </form>
     <div id="countdown"></div>
+
+    <audio id="melody" src="src/a.m4a"></audio>
+
     <script>
       var countdownDiv = document.getElementById("countdown");
       var minutesInput = document.getElementById("minutes");
@@ -146,7 +149,7 @@
         countdownIntervalId = setInterval(function() {
           if (countdownTime <= 0) {
             clearInterval(countdownIntervalId);
-            countdownDiv.innerHTML = "Countdown finished!";
+            melody.play();
             startButton.innerHTML = "Start";
           } else {
             var mins = Math.floor(countdownTime / 60);
