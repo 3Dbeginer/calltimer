@@ -72,6 +72,16 @@
         
       });
     </script>
+    <form>
+      <label for="minutes">Minutes:</label>
+      <input type="number" id="minutes" name="minutes" min="0" max="59" value="0">
+      <label for="seconds">Seconds:</label>
+      <input type="number" id="seconds" name="seconds" min="0" max="59" value="0">
+      <br><br>
+      <button type="button" id="start">Start</button>
+      <button type="button" id="reset">Reset</button>
+    </form>
+    <div id="countdown"></div>
     <script>
       var countdownDiv = document.getElementById("countdown");
       var minutesInput = document.getElementById("minutes");
