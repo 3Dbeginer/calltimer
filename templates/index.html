@@ -16,6 +16,9 @@
         margin: 10px;
         cursor: pointer;
       }
+      .btn:hover {
+        background-color: #045080;
+      }
     </style>
     <style>
       body {
@@ -67,8 +70,8 @@
     </style>
   </head>
   <body>
-    <h1>원장님 호출기</h1>
-    <p style="text-align : center">체어에 맞는 버튼을 눌러주세요</p>
+    <h1>원장실 호출기</h1>
+    
     <div style="text-align : center">
       <a href="#" class="btn" id="btn-1">1번체어</a>
       <a href="#" class="btn" id="btn-2">2번체어</a>
@@ -120,16 +123,17 @@
         
       });
     </script>
+    <div id="countdown"></div>
     <form >
-      <label for="minutes">Minutes:</label>
+      <label style = " padding: 10px"for="minutes">분 : </label>
       <input type="number" id="minutes" name="minutes" min="0" max="59" value="0">
-      <label for="seconds">Seconds:</label>
+      <label style = " padding: 10px" for="seconds">초 : </label>
       <input type="number" id="seconds" name="seconds" min="0" max="59" value="0">
       <br><br>
       <button type="button" id="start">Start</button>
       <button type="button" id="reset">Reset</button>
     </form>
-    <div id="countdown"></div>
+    
 
     <audio id="melody" src="../src/a.mp3"></audio>
 
