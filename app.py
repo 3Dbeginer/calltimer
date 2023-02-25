@@ -114,7 +114,7 @@ def countdown():
         time.sleep(1)
         countdown_time -= 1
 
-    return "Countdown finished!"
+    return render_template('index.html')
 
 if __name__ == "__main__":
     # Flask 앱 실행

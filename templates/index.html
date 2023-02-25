@@ -72,13 +72,56 @@
         
       });
     </script>
-    <form method="POST">
-        <label for="minutes">Minutes:</label>
-        <input type="number" id="minutes" name="minutes" min="0" max="59" value="0">
-        <label for="seconds">Seconds:</label>
-        <input type="number" id="seconds" name="seconds" min="0" max="59" value="0">
-        <br><br>
-        <button type="submit" name="start" value="start">Start</button>
-      </form>
+    <script>
+      var countdownDiv = document.getElementById("countdown");
+      var minutesInput = document.getElementById("minutes");
+      var secondsInput = document.getElementById("seconds");
+      var startButton = document.getElementById("start");
+      var resetButton = document.getElementById("reset");
+      var countdownIntervalId;
+
+      function startCountdown() {
+        var minutes = parseInt(minutesInput.value);
+        var seconds = parseInt(secondsInput.value);
+        var countdownTime = minutes * 60 + seconds;
+        clearInterval(countdownIntervalId);
+        countdownIntervalId = setInterval(function() {
+          if (countdownTime <= 0) {
+            clearInterval(countdownIntervalId);
+            countdownDiv.innerHTML = "Countdown finished!";
+            startButton.innerHTML = "Start";
+          } else {
+            var mins = Math.floor(countdownTime / 60);
+            var secs = countdownTime % 60;
+            countdownDiv.innerHTML = mins.toString().padStart(2, "0") + ":" + secs.toString().padStart(2, "0");
+            countdownTime -= 1;
+          }
+        }, 1000);
+        startButton.innerHTML = "Stop";
+      }
+
+      function stopCountdown() {
+        clearInterval(countdownIntervalId);
+        startButton.innerHTML = "Start";
+      }
+
+      function resetCountdown() {
+        clearInterval(countdownIntervalId);
+        countdownDiv.innerHTML = "";
+        minutesInput.value = 0;
+        secondsInput.value = 0;
+        startButton.innerHTML = "Start";
+      }
+
+      startButton.addEventListener("click", function() {
+        if (startButton.innerHTML === "Start") {
+          startCountdown();
+        } else {
+          stopCountdown();
+        }
+      });
+
+      resetButton.addEventListener("click", resetCountdown);
+    </script>
   </body>
 </html>
