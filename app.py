@@ -118,4 +118,4 @@ def countdown():
 
 if __name__ == "__main__":
     # Flask 앱 실행
-    app.run(host='192.168.0.33', port=8080, debug=True)
+    app.run(host='192.168.0.7', port=8080, debug=True)
